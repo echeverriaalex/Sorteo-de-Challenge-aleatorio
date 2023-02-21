@@ -8,6 +8,7 @@
     </head>
     <body>
         <?php
+            //hpinfo();
             $participantesHombres = [
                 ['Rodrigo Gascón', "https://www.clarin.com/img/2023/02/13/rodrigo-gascon-en-the-challenge___RgEf8cJiW_720x0__1.jpg"],
                 ['Octavio Oky Appo', "https://www.elcolectivo.com.ar/u/fotografias/m/2023/2/14/f768x1-113887_114014_79.jpg"],
@@ -58,12 +59,10 @@
                 array_push($pareja, getParticipante($participantesHombres, $posicion));            
                 unset($participantesHombres[$posicion]);
 
-                $newArrayHombres = array();    
-
+                $newArrayHombres = array();
                 foreach($participantesHombres as $key=> $value){
                     array_push($newArrayHombres, $value);
                 }
-
                 $participantesHombres = $newArrayHombres;
 
                 $posicion = getRandom($participantesMujeres);
@@ -74,24 +73,28 @@
                 foreach($participantesMujeres as $key=> $value){
                     array_push($newArrayMujeres, $value);
                 }
-
                 $participantesMujeres = $newArrayMujeres;
                 array_push($parejasConfirmadas, $pareja);
             }
-            ?>
+        ?>
 
-            <?php 
-                foreach($parejasConfirmadas as $pareja){
-                    echo "<h1> SIGUIENTE PAREJA </h1>"; 
-                    foreach($pareja as $participante){
-            ?>                 
-                        <div style="display: inline-block; margin-right: 5%; margin-left: 5%; width: 90%; background-color: blanchedalmond;">
-                            <img src=" <?php echo $participante[1]; ?>" style="width: 30%; height: 60%;"> 
-                            <h1> <?php echo $participante[0]; ?> </h1>
-                        </div>
-            <?php   
+        <?php 
+            foreach($parejasConfirmadas as $pareja){
+        ?>
+                <div style="margin-top: 50px; ">
+                <?php
+                foreach($pareja as $participante){
+                ?>                 
+                    <aside style="display: block; margin-right: 5%; margin-left: 5%; width: 90%; background-color: blanchedalmond;">
+                        <img src=" <?php echo $participante[1]; ?>" style="width: 30%; height: 60%;"> 
+                        <h1> <?php echo $participante[0]; ?> </h1>
+                    </aside>
+                <?php
                     }
-                }
-            ?>
+                ?>
+                </div>
+        <?php
+            }
+        ?>
     </body>
 </html>
